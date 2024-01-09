@@ -1,0 +1,12 @@
+diff -Naur a/platformio/app.py b/platformio/app.py
+--- a/platformio/app.py	2023-08-31 09:31:46.000000000 -0700
++++ b/platformio/app.py	2024-01-08 20:27:30.497591794 -0800
+@@ -48,7 +48,7 @@
+     },
+     "enable_telemetry": {
+         "description": ("Telemetry service <https://bit.ly/pio-telemetry> (Yes/No)"),
+-        "value": True,
++        "value": False,
+     },
+     "force_verbose": {
+         "description": "Force verbose output when processing environments",
