@@ -1,7 +1,7 @@
 diff -Naur a/platformio/commands/upgrade.py b/platformio/commands/upgrade.py
---- a/platformio/commands/upgrade.py	2023-08-31 09:31:46.000000000 -0700
-+++ b/platformio/commands/upgrade.py	2024-01-08 20:54:23.249079257 -0800
-@@ -32,15 +32,14 @@
+--- a/platformio/commands/upgrade.py	2024-01-12 05:52:01.000000000 -0500
++++ b/platformio/commands/upgrade.py	2024-01-12 10:35:51.600123380 -0500
+@@ -33,15 +33,14 @@
  
  
  @click.command("upgrade", short_help="Upgrade PlatformIO Core to the latest version")
@@ -10,7 +10,7 @@ diff -Naur a/platformio/commands/upgrade.py b/platformio/commands/upgrade.py
  @click.option("--verbose", "-v", is_flag=True)
 -def cli(dev, only_dependencies, verbose):
 -    if only_dependencies:
--        return upgrade_pypi_dependencies(verbose)
+-        return upgrade_pip_dependencies(verbose)
 -
 +def cli(verbose):
      update_core_packages()
@@ -23,8 +23,8 @@ diff -Naur a/platformio/commands/upgrade.py b/platformio/commands/upgrade.py
          return click.secho(
              "You're up-to-date!\nPlatformIO %s is currently the "
 diff -Naur a/platformio/maintenance.py b/platformio/maintenance.py
---- a/platformio/maintenance.py	2023-08-31 09:31:46.000000000 -0700
-+++ b/platformio/maintenance.py	2024-01-08 20:51:19.840096095 -0800
+--- a/platformio/maintenance.py	2024-01-12 05:52:01.000000000 -0500
++++ b/platformio/maintenance.py	2024-01-12 09:23:58.795264113 -0500
 @@ -221,6 +221,9 @@
      # Update PlatformIO Core packages
      update_core_packages()
