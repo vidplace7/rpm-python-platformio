@@ -20,6 +20,8 @@ Patch:          %{forgeurl}/commit/2bad42ecb1271a52203f585b970e13466c2cddb1.patc
 Patch:          platformio-default-telemetry-off.patch
 # Fedora: neuter update logic for platformio itself
 Patch:          platformio-short-circuit-upgrades.patch
+# Allow Starlette 0.38.1
+Patch:          %{forgeurl}/pull/4953.patch
 
 BuildArch:      noarch
 BuildRequires:  python3-devel

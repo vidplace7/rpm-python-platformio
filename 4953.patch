@@ -1,0 +1,22 @@
+From bcc4f0bf34a281e58beab7bc825c1c377acf6231 Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Tue, 23 Jul 2024 11:19:01 -0400
+Subject: [PATCH] Allow Starlette 0.38.1
+
+---
+ platformio/dependencies.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/platformio/dependencies.py b/platformio/dependencies.py
+index 5fd40a1d3a..1e4ba1d7ca 100644
+--- a/platformio/dependencies.py
++++ b/platformio/dependencies.py
+@@ -44,7 +44,7 @@ def get_pip_dependencies():
+     home = [
+         # PIO Home requirements
+         "ajsonrpc == 1.2.*",
+-        "starlette >=0.19, <0.38",
++        "starlette >=0.19, <0.39",
+         "uvicorn %s" % ("== 0.16.0" if PY36 else ">=0.16, <0.30"),
+         "wsproto == 1.*",
+     ]
