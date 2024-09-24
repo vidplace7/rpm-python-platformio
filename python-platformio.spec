@@ -15,17 +15,22 @@ URL:            https://platformio.org
 # PyPI is missing tests, so use the GitHub tarball instead
 Source:         %{forgeurl}/archive/v%{version}/%{srcname}-%{version}.tar.gz
 # Update 99-platformio-udev.rules
-Patch:          %{forgeurl}/commit/2bad42ecb1271a52203f585b970e13466c2cddb1.patch
+Patch0:         %{forgeurl}/commit/2bad42ecb1271a52203f585b970e13466c2cddb1.patch
 # Fedora: disable telemetry by default
-Patch:          platformio-default-telemetry-off.patch
+Patch1:         platformio-default-telemetry-off.patch
 # Fedora: neuter update logic for platformio itself
-Patch:          platformio-short-circuit-upgrades.patch
+Patch2:         platformio-short-circuit-upgrades.patch
 # Allow Starlette 0.38.1 (#4953)
 # https://github.com/platformio/platformio-core/commit/9eb6e5166d4a7c366e5cacbd39fc467c16644667
 # Allow Starlette 0.39.x
 # https://github.com/platformio/platformio-core/commit/4b61de01369e1a943cf1c93564d189ec66580fbd
 # Cherry-picked to v6.1.14.
-Patch:          platformio-starlette-0.39.patch
+Patch3:         platformio-starlette-0.39.patch
+# Update bottle to 0.13.*
+# https://github.com/platformio/platformio-core/commit/4230b223d2cf307408fdd4b1e077f0b149221f13
+# Cherry-picked to v6.1.14.
+# For Fedora 42 and later.
+Patch100:       0001-Update-bottle-to-0.13.patch
 
 BuildArch:      noarch
 BuildRequires:  python3-devel
@@ -53,7 +58,11 @@ Requires:       systemd-udev
 This package contains the PlatformIO command-line utilites and udev rules.
 
 %prep
-%autosetup -p1 -n %{srcname}-%{version}
+%autosetup -p1 -n %{srcname}-%{version} -N
+%autopatch -M99 -p1
+%if !0%{?fc39} && !0%{?fc40} && !0%{?fc41}
+%patch 100 -p1
+%endif
 
 %generate_buildrequires
 %pyproject_buildrequires -t
