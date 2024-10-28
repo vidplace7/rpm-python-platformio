@@ -21,6 +21,10 @@ Patch2:         platformio-short-circuit-upgrades.patch
 # Allow Starlette 0.40.x
 # https://github.com/platformio/platformio-core/pull/5000
 Patch3:         %{forgeurl}/pull/5000.patch
+# Update dependencies.py
+# https://github.com/platformio/platformio-core/commit/a4276b4ea63e8701cfa9c05d820d5dfe61c17409
+# (Allows Starlette 0.41.x)
+Patch4:         %{forgeurl}/commit/a4276b4ea63e8701cfa9c05d820d5dfe61c17409.patch
 
 BuildArch:      noarch
 BuildRequires:  python3-devel
