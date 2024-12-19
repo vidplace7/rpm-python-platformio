@@ -1,0 +1,22 @@
+From 07e7dc47174679fdc6402e899df450a154fd242d Mon Sep 17 00:00:00 2001
+From: Ivan Kravets <me@ikravets.com>
+Date: Mon, 2 Dec 2024 20:38:05 +0200
+Subject: [PATCH] Update deps
+
+---
+ platformio/dependencies.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/platformio/dependencies.py b/platformio/dependencies.py
+index d946b91c75..90fe16d40a 100644
+--- a/platformio/dependencies.py
++++ b/platformio/dependencies.py
+@@ -45,7 +45,7 @@ def get_pip_dependencies():
+         "ajsonrpc == 1.2.*",
+         "starlette >=0.19, <0.42",
+         'uvicorn == 0.16.0; python_version < "3.7"',
+-        'uvicorn >=0.16, <0.31; python_version >= "3.7"',
++        'uvicorn >=0.16, <0.33; python_version >= "3.7"',
+         "wsproto == 1.*",
+     ]
+ 

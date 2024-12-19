@@ -1,0 +1,25 @@
+From 90fc36cf2d328309c985af57854e8f59a3aedbb4 Mon Sep 17 00:00:00 2001
+From: Ivan Kravets <me@ikravets.com>
+Date: Wed, 18 Dec 2024 14:38:24 +0200
+Subject: [PATCH] Update deps
+
+---
+ platformio/dependencies.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/platformio/dependencies.py b/platformio/dependencies.py
+index 90fe16d40a..2489afbdf2 100644
+--- a/platformio/dependencies.py
++++ b/platformio/dependencies.py
+@@ -43,9 +43,9 @@ def get_pip_dependencies():
+     home = [
+         # PIO Home requirements
+         "ajsonrpc == 1.2.*",
+-        "starlette >=0.19, <0.42",
++        "starlette >=0.19, <0.43",
+         'uvicorn == 0.16.0; python_version < "3.7"',
+-        'uvicorn >=0.16, <0.33; python_version >= "3.7"',
++        'uvicorn >=0.16, <0.35; python_version >= "3.7"',
+         "wsproto == 1.*",
+     ]
+ 
