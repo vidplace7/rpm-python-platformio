@@ -1,7 +1,7 @@
-From 18c811ff4dc0ead3f588d70b0df7a8ee41395dcb Mon Sep 17 00:00:00 2001
-From: "Benjamin A. Beasley" <code@musicinmybrain.net>
-Date: Thu, 27 Feb 2025 11:37:20 -0500
-Subject: [PATCH] Allow starlette versions through 0.46
+From 145142ea6c1d97c92a62999d424c0dd712fbb9f5 Mon Sep 17 00:00:00 2001
+From: Ivan Kravets <me@ikravets.com>
+Date: Mon, 24 Feb 2025 13:15:19 +0200
+Subject: [PATCH] Update deps
 
 ---
  platformio/dependencies.py | 2 +-
