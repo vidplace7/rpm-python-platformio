@@ -1,0 +1,12 @@
+diff -Naur platformio-core-6.1.18-original/platformio/dependencies.py platformio-core-6.1.18/platformio/dependencies.py
+--- platformio-core-6.1.18-original/platformio/dependencies.py	2026-01-11 01:12:13.966603197 +0000
++++ platformio-core-6.1.18/platformio/dependencies.py	2026-01-11 01:12:46.860297621 +0000
+@@ -42,7 +42,7 @@
+     home = [
+         # PIO Home requirements
+         "ajsonrpc == 1.2.*",
+-        "starlette >=0.19, <0.51",
++        "starlette >=0.19, <0.52",
+         "uvicorn >=0.16, <0.39",
+         "wsproto == 1.*",
+     ]
