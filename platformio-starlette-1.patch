@@ -1,0 +1,81 @@
+From a772890e8da46da8a3a02880c7b0ffd536aacc90 Mon Sep 17 00:00:00 2001
+From: George Rawlinson <george@rawlinson.net.nz>
+Date: Tue, 31 Mar 2026 00:40:14 +0000
+Subject: [PATCH 1/2] fix: usage with starlette >= 1
+
+starlette has removed the on_startup/shutdown handlers in favour of a
+lifespan handler. This commit implements support for starlette >= 1.
+---
+ platformio/home/run.py | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/platformio/home/run.py b/platformio/home/run.py
+index df3fa47e..752ba5e5 100644
+--- a/platformio/home/run.py
++++ b/platformio/home/run.py
+@@ -14,6 +14,7 @@
+ 
+ import os
+ from urllib.parse import urlparse
++import contextlib
+ 
+ import click
+ import uvicorn
+@@ -86,16 +87,22 @@ def run_server(host, port, no_open, shutdown_timeout, home_url):
+     if path != "/":
+         routes.append(Route("/", protected_page))
+ 
++    @contextlib.asynccontextmanager
++    async def lifespan(app):
++        # startup
++        click.echo("PIO Home has been started. Press Ctrl+C to shutdown.")
++
++        if(not no_open):
++            click.launch(home_url)
++
++        yield
++        # shutdown
++
+     uvicorn.run(
+         Starlette(
+             middleware=[Middleware(ShutdownMiddleware)],
+             routes=routes,
+-            on_startup=[
+-                lambda: click.echo(
+-                    "PIO Home has been started. Press Ctrl+C to shutdown."
+-                ),
+-                lambda: None if no_open else click.launch(home_url),
+-            ],
++            lifespan=lifespan,
+         ),
+         host=host,
+         port=port,
+-- 
+2.53.0
+
+
+From 80c9bb6251b639e42106b35fe4e09afcfe9cd72e Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Sun, 5 Apr 2026 13:43:28 +0100
+Subject: [PATCH 2/2] Allow starlette versions through 1.x
+
+---
+ platformio/dependencies.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/platformio/dependencies.py b/platformio/dependencies.py
+index b36b42b5..da433157 100644
+--- a/platformio/dependencies.py
++++ b/platformio/dependencies.py
+@@ -42,7 +42,7 @@ def get_pip_dependencies():
+     home = [
+         # PIO Home requirements
+         "ajsonrpc == 1.2.*",
+-        "starlette >=0.19, <0.53",
++        "starlette < 2",
+         "uvicorn >=0.16, <0.41",
+         "wsproto == 1.*",
+     ]
+-- 
+2.53.0
+
