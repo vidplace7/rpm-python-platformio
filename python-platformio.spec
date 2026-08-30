@@ -22,6 +22,10 @@ Patch2:         platformio-short-circuit-upgrades.patch
 # https://github.com/platformio/platformio-core/pull/5423
 # Fedora: Allow starlette versions through 1.x
 Patch3:         platformio-starlette-1.patch
+# fix: usage with marshmallow >= 4
+# https://github.com/platformio/platformio-core/pull/5507
+# Fedora: Allow marshmallow 4.x
+Patch4:         platformio-marshmallow-4.patch
 
 BuildArch:      noarch
 BuildRequires:  python3-devel
